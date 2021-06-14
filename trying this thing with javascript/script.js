@@ -1,6 +1,7 @@
 
 function Process() {
     try {
+        document.getElementById("resultData").value = ""
         var jsonData = document.getElementById("taTableData").value;
         var a = JSON.parse(jsonData).headers
         for (key in a) {
@@ -20,10 +21,11 @@ function Process() {
                 statement += "),("
             }
             statement = statement.slice(0, -2)
-            statement += ";"
-            console.log(statement);
+            statement += ";\n\n"
+            document.getElementById("resultData").value += statement;
         }
     } catch (error) {
+        document.getElementById("resultData").value += "Something went wrong... make sure your json is good!";
         alert("something went wrong - make sure your json is good!")
     }
 
